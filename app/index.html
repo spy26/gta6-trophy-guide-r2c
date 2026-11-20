@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonida Trophy Guide — GTA VI · All 55 Trophies</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hero">
+  <div class="hero-top">
+    <div>
+      <p class="kicker">Grand Theft Auto VI · PlayStation 5 · Offline, single-player only</p>
+      <h1>Leonida Trophy Guide</h1>
+      <p class="sub">Every one of the 55 trophies, with a guide on the card — difficulty, time, live rarity, and the one trophy you can miss.</p>
+    </div>
+    <div class="plat" aria-label="Platinum progress">
+      <svg viewBox="0 0 120 120" class="ring">
+        <circle cx="60" cy="60" r="52" class="ring-bg"></circle>
+        <circle cx="60" cy="60" r="52" class="ring-fg" id="ringFg"></circle>
+      </svg>
+      <div class="ring-label"><strong id="pctBig">0%</strong><span id="countBig">0 / 55</span></div>
+      <p class="plat-name">Vice Got a Price! · ~200 h · 4/10</p>
+    </div>
+  </div>
+  <div class="grade-bars" id="gradeBars"></div>
+  <p class="hero-note">Rarity: Exophase, 20 Nov 2026 (day 2 after launch — these climb fast). Cheats disable trophies and saving: leave them off for a trophy run.</p>
+</header>
+
+<section class="missable" id="missableBanner">
+  <span class="missable-tag">⚠ 1 possibly missable</span>
+  <div>
+    <strong>Positive Mental Attitude</strong> — meditate at all 18 spots. PowerPyx, GTABase and KeenGamer agree the Chapter 1 spot on Lucia’s balcony after “Down to Earth” may lock once you leave. <em>Do it in Chapter 1, before moving on.</em>
+  </div>
+  <button id="missableBtn" type="button">See the guide →</button>
+</section>
+
+<section class="planner" id="planner">
+  <h2>Next up <span class="planner-sub">— the smartest order for what you have left</span></h2>
+  <div class="planner-cards" id="plannerCards"></div>
+</section>
+
+<nav class="toolbar" aria-label="Filters and views">
+  <input id="search" type="search" placeholder="Search a trophy or guide…" autocomplete="off">
+  <select id="kindFilter" aria-label="Filter by type">
+    <option value="">All types</option>
+    <option value="story">Story</option>
+    <option value="stranger">Strangers</option>
+    <option value="activity">Activities</option>
+    <option value="collectible">Collectibles</option>
+    <option value="combat">Combat &amp; heists</option>
+    <option value="money">Money</option>
+    <option value="completion">100% completion</option>
+    <option value="misc">Misc</option>
+  </select>
+  <select id="gradeFilter" aria-label="Filter by grade">
+    <option value="">All grades</option>
+    <option value="platinum">Platinum</option>
+    <option value="gold">Gold</option>
+    <option value="silver">Silver</option>
+    <option value="bronze">Bronze</option>
+  </select>
+  <label class="check"><input type="checkbox" id="earnedOnly"> Earned only</label>
+  <label class="check"><input type="checkbox" id="spoilerToggle" checked> Show hidden names</label>
+  <div class="views" role="group" aria-label="View">
+    <button type="button" data-view="cards" class="active">Cards</button>
+    <button type="button" data-view="table">Table</button>
+    <button type="button" data-view="roadmap">Roadmap</button>
+  </div>
+  <div class="tools">
+    <button type="button" id="exportBtn">Export</button>
+    <button type="button" id="importBtn">Import</button>
+    <input type="file" id="importFile" accept="application/json" hidden>
+    <button type="button" id="resetBtn">Reset</button>
+  </div>
+</nav>
+
+<main>
+  <p class="result-count" id="resultCount"></p>
+  <section id="view-cards" class="cards" aria-label="Trophy cards"></section>
+  <section id="view-table" class="table-wrap" hidden aria-label="Trophy table">
+    <table>
+      <thead><tr>
+        <th><button type="button" data-sort="name">Trophy</button></th>
+        <th><button type="button" data-sort="grade">Grade</button></th>
+        <th><button type="button" data-sort="rarity">Rarity</button></th>
+        <th><button type="button" data-sort="diff">Difficulty</button></th>
+        <th><button type="button" data-sort="time">Time</button></th>
+        <th>Guide</th><th>Earned</th>
+      </tr></thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </section>
+  <section id="view-roadmap" class="roadmap" hidden aria-label="Platinum roadmap">
+    <div class="phase">
+      <h3>Phase 1 — Story · 60–80 h</h3>
+      <p>Play Chapters 1–4 and the finale. Grab the missable meditation spot in Chapter 1, and the easy side trophies that sit on the story path (In The Beginning…, Capital Offense, Ten Pin).</p>
+      <div class="phase-bar"><span id="phase1Bar"></span></div>
+      <p class="phase-count" id="phase1Count"></p>
+    </div>
+    <div class="phase">
+      <h3>Phase 2 — 100% grind · ~100 h</h3>
+      <p>The long tail: 250 stunts, 42 gold shooting ranges, 50+ challenges, 100 vehicles, all 52 areas, money trophies. The in-game 100% tracker (35 tasks) appears after the credits.</p>
+      <div class="phase-bar"><span id="phase2Bar"></span></div>
+      <p class="phase-count" id="phase2Count"></p>
+    </div>
+    <div class="phase">
+      <h3>Phase 3 — Strangers &amp; clean-up · 10–20 h</h3>
+      <p>Finish 8 stranger strands, the last collectibles (cards, WAiNK, meditation), and the two unconfirmed trophies once the community pins their triggers.</p>
+      <div class="phase-bar"><span id="phase3Bar"></span></div>
+      <p class="phase-count" id="phase3Count"></p>
+    </div>
+    <p class="roadmap-note">Hidden trophies stay spoiler-safe in the planner: they are recommended without leaking their names (“Hidden story trophy · Ch. 2”). Turn “Show hidden names” off to hide them everywhere.</p>
+  </section>
+</main>
+
+<div class="detail-backdrop" id="detailBackdrop" hidden>
+  <div class="detail" role="dialog" aria-modal="true" aria-labelledby="detailName">
+    <button type="button" class="detail-close" id="detailClose" aria-label="Close">✕</button>
+    <p class="detail-grade" id="detailGrade"></p>
+    <h2 id="detailName"></h2>
+    <p class="detail-desc" id="detailDesc"></p>
+    <dl class="detail-meta" id="detailMeta"></dl>
+    <h3>How to get it</h3>
+    <p id="detailGuide"></p>
+    <p class="detail-src" id="detailSrc"></p>
+    <h3>Your note</h3>
+    <textarea id="detailNote" rows="3" placeholder="Where you are with this one, a spot location, a loadout…"></textarea>
+    <label class="check detail-earned"><input type="checkbox" id="detailEarned"> Earned</label>
+  </div>
+</div>
+
+<footer>
+  <p>Sources: PowerPyx (difficulty 4/10, ~200 h platinum), GTABase, KeenGamer, GTAScoop, Insider Gaming. Rarity: Exophase, 20 Nov 2026. Two trophies are honestly marked unconfirmed (Bad Luck, I Guess; The Truth Is Out There) and two are single-source (Personal Best; Let’s Go Bowling). Progress and notes are stored only in your browser (localStorage) — nothing leaves this page.</p>
+</footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>
